@@ -1,0 +1,18 @@
+{
+  "name": "Hello Extensions",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "host_permissions": ["https://*/*/*"],
+  "permissions":["activeTab","scripting"],
+  "content_scripts":[{
+
+    "matches":["https://citu.codechum.com/student/study-area/*"],
+    "js":["content.js"]
+  }
+],
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": "image.png"
+  }
+}
