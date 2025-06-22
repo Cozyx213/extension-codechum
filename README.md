@@ -1,4 +1,4 @@
-# CodeCram: Solution Generator
+# CodeCram: CodeChum Solution Generator
 
 This repository contains a chrome extension and a Flask-based backend that work together to provide automatic coding solutions. When a user visits codechum's study area, the extension injects a “Solution” button onto the page. Clicking this button sends the current problem’s title and description to the backend. The backend then checks if a solution already exists in the database; if not, it uses the Google Generative AI (Gemini API) to generate one, stores it, and displays it for the user.
 
