@@ -8,7 +8,7 @@
     style.textContent = `
     @keyframes gptSpin { to { transform: rotate(360deg); } }
     .gpt-spinner{
-      width:14px;height:14px;border:2px solid #0003;border-top-color:#000;
+      width:14px;height:14px;border:2px solid #808080;border-top-color:#000;
       border-radius:50%;display:inline-block;animation:gptSpin .8s linear infinite;
     }`;
     document.head.appendChild(style);
@@ -46,6 +46,24 @@
      
 
         /* ----- create button ----- */
+
+        const themeElem = document.querySelector('.styles_icon__Qu5G7.styles_button_icon__QuZsh');
+        var col;
+        var textCol;
+        if(themeElem){
+            const text = themeElem.textContent;
+            if(text==="brightness_2"){
+                col ="#34383a"
+                textCol= "#FFF"
+            }else{
+                col = "#FFF"
+                textCol = "#000"
+               
+            }
+            console.log(text)
+        }else{
+            return;
+        }
         const btn = document.createElement("button");
         btn.id = "gpt-help-btn";
         btn.textContent = "Solution";
@@ -53,10 +71,11 @@
             marginLeft: "10px",
             padding: "6px 12px",
             fontSize: "14px",
-            background: "#FFF",
-            color: "#000",
+            background: col,
+            color: textCol,
             border: "none",
             borderRadius: "5px",
+            cursor: "pointer"
         });
 
         /* ----- click handler with spinner ----- */
