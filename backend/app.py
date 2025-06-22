@@ -6,6 +6,11 @@ import psycopg2
 from flask import Flask, request, render_template, jsonify
 import requests
 from flask_cors import CORS
+import urllib.parse
+
+
+
+
 app = Flask(__name__)
 CORS(app) 
 
@@ -26,7 +31,7 @@ def gen_solution(desc):
     prompt = """output only the code and add comments. dont use outside libraries unlesss very 
     nececary  use a main funciton and then another function for the logic. you usually use main
       to oge the inoput and then call the new funciton dont use too much comments just mkae it
-        simple and use why. use only the language c """ + desc
+        simple and use why""" + desc
     
     model = genai.GenerativeModel('gemini-2.5-pro-preview-05-06')
     try:
@@ -79,9 +84,12 @@ def home():
 def submit():
     title = request.json.get("title")
     desc = request.json.get("desc")
-    if not title or desc:
-        print("missing args")
-
+    
+    if not title :
+        print("missing title")
+    if not desc :
+        print("missing desc")
+   
     print(title,desc)
     conn = get_db_connection()
    
@@ -108,7 +116,8 @@ def submit():
 
 @app.route("/solution",methods=["GET"])
 def solution():
-    content_title = request.args.get("title")
+    encoded_title = request.args.get("title")
+    content_title = urllib.parse.unquote(encoded_title)
     print(content_title)
     conn = get_db_connection()
     try:

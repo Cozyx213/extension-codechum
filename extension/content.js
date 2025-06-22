@@ -1,3 +1,4 @@
+
 // gpt-solution-button.js
 (() => {
     /* -------------------------------------------------- *
@@ -16,34 +17,34 @@
      * 2.  Main helper—runs once per eligible page load   *
      * -------------------------------------------------- */
     function injectGptButton() {
-       
-      
+        // Select the input element by its type and name attribute
+        
+
         const titleEl = document.querySelector(
             ".styles_text___heading___xs__Qdbcu"
         );
-        
+
         const descElem = document.querySelector(
             '[data-testid="problemDescription"]'
         );
-       
+
         const examElem = document.querySelector(".styles_description__sQT3h");
         if (
             !titleEl ||
-            !descElem||
-            (descElem.textContent.trim())==""||
+            !descElem ||
+            descElem.textContent.trim() == "" ||
             !examElem ||
             document.getElementById("gpt-help-btn") ||
             !document.querySelector(".styles_markdown__uJNjw")
         )
             return;
 
-        const title = titleEl.textContent;
+        
         const prob = descElem.textContent.trim();
         const exam = examElem.textContent.trim();
-        const desc = prob + exam;
         // If exam is needed in the fetch body, include it; otherwise, remove the next line.
-        console.log(desc)
-        
+     
+
         /* ----- create button ----- */
         const btn = document.createElement("button");
         btn.id = "gpt-help-btn";
@@ -56,11 +57,19 @@
             color: "#000",
             border: "none",
             borderRadius: "5px",
-            cursor: "pointer",
         });
 
         /* ----- click handler with spinner ----- */
         btn.addEventListener("click", async () => {
+            const langElem = document.querySelector('[data-testid="singleValueLabel"]')
+            const lang = langElem.textContent;
+            const title = titleEl.textContent + ` (${lang})`;
+            const desc = "Using the language " + lang + ", " + prob + exam;
+            console.log(title)
+            console.log(desc)
+
+
+            const encodedTitle = encodeURIComponent(title)
             if (btn.dataset.loading === "true") return; // block double-clicks
             btn.dataset.loading = "true";
             const originalHTML = btn.innerHTML;
@@ -76,7 +85,7 @@
                 const out = await res.json();
                 if (out.id) {
                     window.open(
-                        `http://127.0.0.1:5000/solution?title=${out.id}`,
+                        `http://127.0.0.1:5000/solution?title=${encodedTitle}`,
                         "_blank"
                     );
                 } else {
