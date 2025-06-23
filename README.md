@@ -113,4 +113,4 @@ CREATE TABLE public.users (
 -   **Performance:**  
     Consider using caching or connection pooling for database operations if scaling is required.
 
-This repository serves as a basic example of integrating frontend browser extensions with a Flask backend and utilizing Generative AI for dynamic coding solutions.   :<
+This repository serves as a basic example of integrating frontend browser extensions with a Flask backend and utilizing Generative AI for dynamic coding solutions.   :< :>
