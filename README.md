@@ -115,6 +115,4 @@ CREATE TABLE public.users (
 
 
 
-This repository serves as a basic example of integrating frontend browser extensions with a Flask backend and utilizing Generative AI for dynamic coding solutions.   :<
-     bruh gaga
-
+This repository serves as a basic example of integrating frontend browser extensions with a Flask backend and utilizing Generative AI for dynamic coding solutions.  :>
