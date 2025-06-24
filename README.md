@@ -71,22 +71,7 @@ pip install flask flask-cors psycopg2 google-generativeai python-dotenv
 
 Create the necessary tables in your PostgreSQL database:
 
-```sql
-DROP TABLE IF EXISTS solutions;
-CREATE TABLE solutions (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(50) NOT NULL,
-    solution VARCHAR(500) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
-DROP TABLE IF EXISTS public.users;
-CREATE TABLE public.users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
 
 ## Running the Application
 
